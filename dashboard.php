@@ -47,6 +47,8 @@
                 background: #e7e7e7;
                 grid-area: nav;
                 border-right: 1px solid #c7c7c7;
+                display: grid;
+                grid-template-rows: min-content 1fr;
             }
 
             #dashboard-logo img{
@@ -81,6 +83,7 @@
             #dashboard-navigation ul li:last-child{
                 align-self: flex-end;
                 font-weight: 700;
+                margin-top: auto;
             }
 
             #dashboard-navigation ul li:hover{
@@ -95,7 +98,7 @@
             #add-media-button{
                 padding: 10px;
                 background: #2776d7;
-                margin: 0px auto 20px auto;
+                margin: 20px auto;
                 text-align: center;
                 border-radius: 5px;
                 color: white;
@@ -135,14 +138,18 @@
             </div>
 
             <div id="dashboard-navigation">
-                <div id="add-media-button">Upload File <i class="fa-solid fa-file-arrow-up"></i></div>
-                <ul>
-                    <li><a><i class="fa-solid fa-image"></i> Pictures</a></li>
-                    <li><a><i class="fa-solid fa-film"></i> Videos</a></li>
-                    <li><a><i class="fa-solid fa-file-word"></i> Documents</a></li>
-                    <li><a><i class="fa-solid fa-file-zipper"></i> Compressed Files</a></li>
-                    <li><a><i class="fa-solid fa-gear"></i> Settings</a></li>
-                </ul>
+               <div id="dashboard-nav-upload">
+                    <div id="add-media-button">Upload File <i class="fa-solid fa-file-arrow-up"></i></div>
+               </div>
+                <div id="dashboard-nav-menu">
+                    <ul>
+                        <li><a><i class="fa-solid fa-image"></i> Pictures</a></li>
+                        <li><a><i class="fa-solid fa-film"></i> Videos</a></li>
+                        <li><a><i class="fa-solid fa-file-word"></i> Documents</a></li>
+                        <li><a><i class="fa-solid fa-file-zipper"></i> Compressed Files</a></li>
+                        <li><a><i class="fa-solid fa-gear"></i> Settings</a></li>
+                    </ul>
+                </div>
             </div>
 
             <div id="dashboard-content">
