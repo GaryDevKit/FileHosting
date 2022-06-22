@@ -31,10 +31,10 @@
             }
 
             #dashboard-logo{
-                background: #e7e7e7;
+                background: #f5f5f5;
                 grid-area: logo;
                 display: flex;
-                border-right: 1px solid #c7c7c7;
+                border-bottom: 1px solid #c7c7c7;
             }
 
             #dashboard-header{
@@ -87,7 +87,7 @@
             }
 
             #dashboard-navigation ul li:hover{
-                background: #b1b1b1;
+                background: #878787;
                 color: #ffffff;
             }
 
@@ -104,7 +104,7 @@
                 color: white;
                 text-transform: capitalize;
                 letter-spacing: 0.5px;
-                max-width: 80%;
+                width: 80%;
                 box-sizing: border-box;
                 cursor: pointer;
             }
@@ -122,12 +122,100 @@
                 grid-area: content;
             }
 
+            #trans-overlay{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .4);
+                z-index: 900;
+            }
+
+            #file-upload-area{
+                position: fixed;
+                min-height: 30%;
+                min-width: 25%;
+                max-height: 60%;
+                max-width: 55%;
+                padding: 20px;
+                box-sizing: border-box;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #fbfbfb;
+                box-shadow: 0 0 19px -5px rgba(0, 0, 0, 0.35);
+                border-radius: 5px;
+                z-index: 901;
+            }
+
+            #file-upload-area h2{
+                border-top: 1px solid #d5d5d5;
+                border-bottom: 1px solid #d5d5d5;
+                margin: 0;
+                padding: 10px 0px;
+                font-weight: 400;
+            } 
+            
+            #file-upload-area form label{
+                display: block;
+                width: 80%;
+                margin: 20px auto 0 auto;
+                background: #e3e3e3;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            #file-upload-area form button{
+                border: 0;
+                display: block;
+
+                background-color: #2776d7;
+                padding: 20px;
+                border-radius: 5px;
+                width: 80%;
+                margin: 0 auto;
+
+                color: white;
+                text-transform: capitalize;
+                letter-spacing: 0.5px;
+                box-sizing: border-box;
+                cursor: pointer;
+            }
+
+            #file-upload-area form label i{
+                font-size: 90px;
+                margin-top: 20px;
+                color: #2776d7;
+            }
+
+            #file-upload-area form label p{
+                margin-top: 60px;
+                padding-bottom: 20px;
+            }
+
         </style>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+        <div id="file-upload-area">
+            <h2>New File Import</h2>
+            <form action="" method="post">
+                <input type="file" name="files" id="rlMediaUploadBttn" hidden>
+                <label for="rlMediaUploadBttn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag or click to add files for uploading...</p>              
+                </label>
+                <button type="submit">Upload Files</button>
+            </form>
+        </div>
+
+        <div id="trans-overlay">
+
+        </div>
         
         <div id="dashboard-container">
             <div id="dashboard-logo">
@@ -140,7 +228,7 @@
             <div id="dashboard-navigation">
                <div id="dashboard-nav-upload">
                     <div id="add-media-button">Upload File <i class="fa-solid fa-file-arrow-up"></i></div>
-               </div>
+                </div>
                 <div id="dashboard-nav-menu">
                     <ul>
                         <li><a><i class="fa-solid fa-image"></i> Pictures</a></li>
