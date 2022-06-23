@@ -7,12 +7,12 @@ include_once '../Classes/UserClass.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userForeName = $_POST['Forename'];
-    $userSurame = $_POST['Surname'];
+    $userSurname = $_POST['Surname'];
     $userEmail = $_POST['Email'];
     $userPassword = $_POST['Password'];
 
 
-    $newUser = new User($userForeName, $userSurame, $userEmail, $userPassword);
+    $newUser = new User($userForeName, $userSurname, $userEmail, $userPassword);
     $checkedUser = $newUser -> checkUserExists();
     $newUser -> addUser($checkedUser);
 

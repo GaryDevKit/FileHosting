@@ -1,8 +1,7 @@
 <?php
 
 include_once '../Database/database.php';
-
-
+include_once 'SessionsClass.php';
 
 
 Class User {
@@ -17,6 +16,7 @@ Class User {
 
     public $saltOne = "78HJJU";
     public $saltTwo = "709ioj";
+
 
     function __construct($firstName, $Surname, $Email, $Password) {
         $this -> firstName = $firstName;
@@ -71,6 +71,8 @@ Class User {
         $database = new Database('mysql:dbname=filehosting;host=127.0.0.1','root',''); 
         $database->newDBHandler();
 
+        $sessionsStart = new sessionClass();
+
         $sql = "SELECT * FROM `user` WHERE `Email` = :email";
 
         $sqlStatement = $database->dbh->prepare($sql);
@@ -84,6 +86,14 @@ Class User {
             if ($results['Email'] == $this->Email){
                 if ($results['Password'] == $this->Password){
                     echo "<p>Your Password is: ".$results['Password']."</p>";
+                    $userInfo = array("Type"=>"User","FirstName"=>$results['FirstName'],"Surname"=>$results['Surname'],"userEmail"=>$results['Email']);
+
+                    $sessionsStart -> createUserSession($userInfo);
+                    
+                    if (isset($_SESSION['UserAccount'])){
+                        print_r($_SESSION['UserAccount']['FirstName']);
+                        header("Location: ../../dashboard.php");
+                    }
                 } else{
                     echo "<p>Oops it would appear you entered an incorrect password.</p>";
                 }
