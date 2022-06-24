@@ -279,8 +279,8 @@
                         <img src="https://th.bing.com/th/id/R.6ab0eefff471492cabad5f79cbbca612?rik=qRTcr2fnEwXepQ&pid=ImgRaw&r=0"/>
                     </div>
                     <div id="db-hdr-right-left">
-                        <h3><?php echo $_SESSION['UserAccount']['FirstName']. " ". $_SESSION['UserAccount']['Surname'] ?></h3>
-                        <p><a>Settings</a><a>Sign Out</a></p>
+                        <h3><?php echo $_SESSION['UserAccount']['FirstName']. " ". $_SESSION['UserAccount']['Surname'];?></h3>
+                        <p><a>Settings</a><a href="PHP/Scripts/userAccountLogout.php">Sign Out</a></p>
                     </div>
                 </div>
             </div>

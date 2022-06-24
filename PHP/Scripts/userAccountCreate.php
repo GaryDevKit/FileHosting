@@ -1,6 +1,7 @@
 <?php
 /* Include Classes file*/
 include_once '../Classes/UserClass.php';
+include_once '../Classes/DirectoryClass.php';
 
 
 //Check if the request is a post.
@@ -14,7 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $newUser = new User($userForeName, $userSurname, $userEmail, $userPassword);
     $checkedUser = $newUser -> checkUserExists();
-    $newUser -> addUser($checkedUser);
+    $genKey = $newUser -> generateKey();
+    $newUser -> addUser($checkedUser,$genKey);
+
+    $dirObj = new DirectoryClass();
+    $dirObj -> createDirectory($userForeName,$genKey);
 
     /*THIS WILL BE USED TO SEND OUT AN E-MAIL
     
