@@ -38,7 +38,7 @@ Class User {
         $text="";
         for ($i = 0; $i < 20; $i++){
             $this -> random = rand(0,($this -> listCharLength - 1));
-            $text = $this -> listChar[$this->random];
+            $text .= $this -> listChar[$this->random];
         }
         $this -> hashedKey = hash('ripemd160', $this->saltOne.$text.$this->saltTwo);
         return $this -> hashedKey;
@@ -109,7 +109,7 @@ Class User {
 
                     $dirLocal = "../../uploads/".$results['FirstName']."_".$results['UniqueKey'];
 
-                    $userInfo = array("Type"=>"User","FirstName"=>$results['FirstName'],"Surname"=>$results['Surname'],"userEmail"=>$results['Email'],"UploadDirectory"=>$dirLocal);
+                    $userInfo = array("Type"=>"User","FirstName"=>$results['FirstName'],"Surname"=>$results['Surname'],"userEmail"=>$results['Email'],"UploadDirectory"=>$dirLocal,"UniqueKey"=>$results['UniqueKey']);
 
                     $sessionsStart -> createUserSession($userInfo);
                     

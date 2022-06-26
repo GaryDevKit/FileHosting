@@ -1,5 +1,6 @@
 <?php
     include_once '../Classes/SessionsClass.php';
+    include_once '../Classes/FileToServerClass.php';
 
     $sessionsStart = new sessionClass();
     $sessionsStart -> startSession();
@@ -23,8 +24,18 @@
             if(in_array($imageFileType, $supportedFormats, true)){
                 if(!file_exists($targetFile)){
                     if(move_uploaded_file($_FILES["filesToUpload"]["tmp_name"][$i], $targetFile)){
+                        $weburl = "http://localhost/FileHosting/uploads/" . $_SESSION['UserAccount']['FirstName'] . "_" . $_SESSION['UserAccount']['UniqueKey'] . "/" .basename($_FILES["filesToUpload"]["name"][$i]);
                         $messageSuccess = "File: " . basename($_FILES["filesToUpload"]["name"][$i]) . " uploaded successfully <br>";
                         echo $messageSuccess;
+                        $saveUpload = new FileToServerClass(
+                            "String",
+                            $_FILES["filesToUpload"]["name"][$i],
+                            $_FILES["filesToUpload"]["size"][$i],
+                            $_FILES["filesToUpload"]["type"][$i],
+                            true,
+                            $weburl);
+                        $saveUpload -> addFileToServer();
+                        echo "<a href='$weburl'>Image File Click here</a>";
                     } else{
                         echo "Something went wrong.";
                     }
