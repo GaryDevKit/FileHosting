@@ -13,7 +13,12 @@ class DirectoryClass {
     }
 
     function removeDirectory($directory){
+        rmdir('examples');
+    }
 
+    function removeDirectoryFile($directory, $file){
+        echo $fileLocation = $directory.$file;
+        unlink($fileLocation);
     }
 }
 

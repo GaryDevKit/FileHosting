@@ -18,18 +18,22 @@
     } 
     else{
         for ($i = 0; $i < $numOfFiles; $i++){
+            
             $targetDir = $_SESSION['UserAccount']['UploadDirectory']."/";
-            $targetFile = $targetDir . basename($_FILES["filesToUpload"]["name"][$i]);
+            $nameFix = str_replace(" ","_",basename($_FILES["filesToUpload"]["name"][$i]));
+            
+            $targetFile = $targetDir . $nameFix;
+            $targetFile = str_replace(" ","_",$targetFile);
             $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
             if(in_array($imageFileType, $supportedFormats, true)){
                 if(!file_exists($targetFile)){
                     if(move_uploaded_file($_FILES["filesToUpload"]["tmp_name"][$i], $targetFile)){
-                        $weburl = "http://localhost/FileHosting/uploads/" . $_SESSION['UserAccount']['FirstName'] . "_" . $_SESSION['UserAccount']['UniqueKey'] . "/" .basename($_FILES["filesToUpload"]["name"][$i]);
+                        $weburl = "http://localhost/FileHosting/uploads/" . $_SESSION['UserAccount']['FirstName'] . "_" . $_SESSION['UserAccount']['UniqueKey'] . "/" . $nameFix;
                         $messageSuccess = "File: " . basename($_FILES["filesToUpload"]["name"][$i]) . " uploaded successfully <br>";
                         echo $messageSuccess;
                         $saveUpload = new FileToServerClass(
-                            "String",
-                            $_FILES["filesToUpload"]["name"][$i],
+                            $_SESSION['UserAccount']['UniqueKey'],
+                            $nameFix,
                             $_FILES["filesToUpload"]["size"][$i],
                             $_FILES["filesToUpload"]["type"][$i],
                             true,

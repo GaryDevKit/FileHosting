@@ -3,7 +3,6 @@
     Import the classes required for the database connection and the sessions.
 */
 include_once '../Database/database.php';
-include_once 'SessionsClass.php';
 
 class FileToServerClass{
     
@@ -16,7 +15,7 @@ class FileToServerClass{
     public $mediaType;
     public $mediaSFW;
 
-    function __construct($userID=null,$mediaName,$mediaSize,$mediaType,$mediaSFW,$dirPath) {
+    function __construct($userID=null,$mediaName=null,$mediaSize=null,$mediaType=null,$mediaSFW=null,$dirPath=null) {
         
         $this -> database = new Database('mysql:dbname=filehosting;host=127.0.0.1','root',''); 
         $this -> database -> newDBHandler();
@@ -43,9 +42,24 @@ class FileToServerClass{
 
         $insert = $sqlStatement -> execute();
 
-            if($insert){
-                echo "Information added to table.";
-            }
+        if($insert){
+            echo "Information added to table.";
+        }
+    }
+
+    function removeFileFromServer($fileName){
+        
+        $sql = "DELETE FROM `media` WHERE `MediaName` = :medianame";
+        $sqlStatement = $this -> database -> dbh -> prepare($sql);
+
+        $sqlStatement -> bindValue('medianame', $fileName);
+
+
+        $delete = $sqlStatement -> execute();
+
+        if($delete){
+            echo "Information deleted table.";
+        }
     }
 }
 
