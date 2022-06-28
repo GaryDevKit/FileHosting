@@ -4,10 +4,10 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
-        echo $fileName = $_POST['Name'];
+        $fileName = $_POST['Name'];
 
-        //$fileRemove = new FileToServerClass();
-        //$fileRemove -> removeFileFromServer($fileName);
+        $fileRemove = new FileToServerClass();
+        $fileRemove -> removeFileFromServer($fileName);
 
         
 
