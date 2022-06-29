@@ -24,7 +24,7 @@ class DisplayMediaClass {
             ?>
                 <div style="background-image: url(<?php echo $results['MediaURL']; ?>);" class="image-tile">
                         <div class="image-tile-details">
-                            <a onclick="getElementData(this)" data-media-name="<?php echo $results['MediaName']; ?>" data-media-size="<?php echo $results['MediaSize']; ?>" data-media-type="<?php echo $results['MediaType']; ?>" href=""><i class="fa-solid fa-info"></i></a>
+                            <a onclick="getElementData(this)" data-media-name="<?php echo $results['MediaName']; ?>" data-media-size="<?php echo $results['MediaSize']; ?>" data-media-type="<?php echo $results['MediaType']; ?>"><i class="fa-solid fa-info"></i></a>
                             <a href="<?php echo $results['MediaURL']; ?>" download><i class="fa-solid fa-cloud-arrow-down"></i></a>
                         </div>
                 </div>

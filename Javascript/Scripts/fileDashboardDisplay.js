@@ -15,21 +15,21 @@ function ShowFiles(){
 }
 
 function getElementData(el){
-    el.closest(getElementsByClassName('image-tile'));  
-    let fileName = el.getAttribute('data-media-name');
-    RemoveFile(el, fileName); 
+    const name =  el.getAttribute('data-media-name');
+    const tile = el.closest('.image-tile');
+    RemoveFile(tile, name);
 }
 
-function RemoveFile(tile, fileName){
-    const file = "Name="+fileName;
+function RemoveFile(tile, name){
+    const file = "Name=" + name;
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("POST", "PHP/Scripts/fileRemoveScript.php", True);
+    xhttp.open("POST", "PHP/Scripts/fileRemoveScript.php");
     
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhttp.responseType = "text";
-    // Define a callback function
+
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.response);
@@ -38,6 +38,5 @@ function RemoveFile(tile, fileName){
         }
     }
 
-    // Send a request
     xhttp.send(file);
 }

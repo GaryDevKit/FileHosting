@@ -1,7 +1,7 @@
 <?php
 
 include_once '../Classes/DisplayMediaClass.php';
-include_once '../Classes/FileToServerClass.php';
+include_once '../Classes/FileManagementClass.php';
 include_once '../Classes/SessionsClass.php';
 
 $sessionsStart = new sessionClass();

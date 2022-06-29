@@ -10,8 +10,9 @@ html, body{
 }
 
 input::placeholder {
-    color: #1c87c9;
+    color: #142948;
     opacity: 1;
+    font-weight: 600;
   }
 
 #dashboard-container{
@@ -47,7 +48,7 @@ input::placeholder {
 
 #dashboard-header-right{
     display: grid;
-    grid-template-columns:min-content max-content;
+    grid-template-columns:min-content min-content max-content;
     grid-template-rows: 60px;
     column-gap: 10px;
 }
@@ -303,17 +304,33 @@ input::placeholder {
 
 #dashboard-header-left form{
     width: 100%;
+    position: relative;
+}
+
+#dashboard-header-left form i{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 20;
+    color: #142948;
 }
 
 #dashboard-header-left form input{
     border: 0px;
     border-radius: 300px;
-    max-width: 70%;
-    width: 300px;
-    padding: 5px 15px;
+    max-width: 40%;
+    padding: 10px 15px 10px 35px;
     background: #ffffff73;
     color: black;
     outline: none;
+    transition: max-width .5s ease;
+}
+
+
+
+#dashboard-header-left form input:focus{
+    max-width: 50%;
 }
 
 #images-content{
@@ -363,3 +380,82 @@ input::placeholder {
     color: white;
 
 }
+
+@media screen and (max-width: 800px) {
+    #dashboard-container {
+        grid-template-areas:
+            "logo header header header"
+            "content content content content"
+            "nav nav nav nav";
+        grid-template-columns: 100px 1fr 1fr 1fr;
+    }
+
+    #dashboard-navigation ul{
+        flex-flow: row;
+    }
+
+    #dashboard-navigation ul li{
+        width: min-content;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    #dashboard-navigation ul li i{
+        margin-right: 0px;
+    }
+
+    #dashboard-navigation ul li a{
+        padding: 10px 20px;
+    }
+
+    #dashboard-navigation ul li a span{
+        display: none;
+    }
+
+    #dashboard-nav-menu{
+        grid-template-columns: min-content 1fr min-content;
+    }
+
+    #add-media-button{
+        margin: 5px;
+        width: min-content;
+        letter-spacing: 0;
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+
+    #add-media-button i{
+        margin-left: 0px;
+    }
+    #add-media-button span{
+        display: none;
+    }
+
+    #dashboard-navigation {
+        grid-template-rows: 1fr;
+        grid-template-columns: min-content 1fr;
+        background-color: #ffffff;
+    }
+
+    #dashboard-nav-upload{
+        display: flex;
+    }
+
+    #images-content{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 7.5px;
+    }
+    
+    #db-hdr-right-left{
+        display: none;
+    }
+
+    #dashboard-header-right{
+        grid-template-columns: min-content min-content;
+    }
+
+    #dashboard-logo{
+        background: #2776d7;
+    }
+
+  }

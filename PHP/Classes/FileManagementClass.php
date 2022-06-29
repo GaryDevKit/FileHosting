@@ -4,7 +4,7 @@
 */
 include_once '../Database/database.php';
 
-class FileToServerClass{
+class FileManagement{
     
     public $dirPath;
     public $database;
@@ -58,7 +58,14 @@ class FileToServerClass{
         $delete = $sqlStatement -> execute();
 
         if($delete){
-            echo "Information deleted table.";
+            return true;
+        }
+    }
+
+    function removeFileFromStorage($checked, $file){
+        if ($checked){
+            unlink($file);
+            echo "Image was deleted";
         }
     }
 }

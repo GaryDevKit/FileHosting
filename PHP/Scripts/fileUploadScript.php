@@ -1,6 +1,6 @@
 <?php
     include_once '../Classes/SessionsClass.php';
-    include_once '../Classes/FileToServerClass.php';
+    include_once '../Classes/FileManagementClass.php';
 
     $sessionsStart = new sessionClass();
     $sessionsStart -> startSession();
@@ -31,7 +31,7 @@
                         $weburl = "http://localhost/FileHosting/uploads/" . $_SESSION['UserAccount']['FirstName'] . "_" . $_SESSION['UserAccount']['UniqueKey'] . "/" . $nameFix;
                         $messageSuccess = "File: " . basename($_FILES["filesToUpload"]["name"][$i]) . " uploaded successfully <br>";
                         echo $messageSuccess;
-                        $saveUpload = new FileToServerClass(
+                        $saveUpload = new FileManagement(
                             $_SESSION['UserAccount']['UniqueKey'],
                             $nameFix,
                             $_FILES["filesToUpload"]["size"][$i],
