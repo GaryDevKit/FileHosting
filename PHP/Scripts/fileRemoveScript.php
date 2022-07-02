@@ -16,5 +16,4 @@
 
         $fileRemove -> removeFileFromStorage($fileRemove, $path);
     }
-
 ?>

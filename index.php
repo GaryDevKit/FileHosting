@@ -1,5 +1,11 @@
 <?php
+    include_once 'PHP/Classes/SessionsClass.php';
+    $sessionsStart = new sessionClass();
+    $sessionsStart -> startSession();
 
+    if(isset($_SESSION['UserAccount'])){
+        header ("Location: /FileHosting/Dashboard/");
+    }
 ?>
  
  <!DOCTYPE html>
@@ -9,6 +15,7 @@
  <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
  <html>
      <head>
+         <base href="http://localhost/FileHosting/">
          <meta charset="utf-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <title>Filzoro Login</title>
@@ -22,13 +29,13 @@
          <![endif]-->
 
         <div id="login-section">
-            
             <div id="login-section-content">
-                <img src=""/>
+                <img src="Media/Images/logo-white.png"/>
+                <p>Sign into your account and start backing up your valuable files.</p>
                 <form action="PHP/Scripts/userAccountLogin.php" method="post">
                     <input type="email" placeholder="Enter E-mail Address" name="Email">
                     <input type="password" placeholder="Enter Password" name="Password">
-                    <input type="submit" value="Sign In" name="submit">
+                    <button type="submit" value="Sign In" name="submit">Sign In</button>
                 </form>
                 <p><a href="">Forgotten your password? Click here to reset your account details.</a></p>
                 <p><a href="register.php">Don't have an account? Click here to register now.</a></p>

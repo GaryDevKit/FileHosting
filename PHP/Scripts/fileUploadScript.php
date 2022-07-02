@@ -7,12 +7,36 @@
     
     $numOfFiles = count($_FILES["filesToUpload"]["name"]);
 
-    $supportedFormats = array(
+    /*$supportedFormats = array(
         "PNG"=>"png",
         "JPEG"=>"jpeg",
         "GIF"=>"gif",
-        "JPG"=>"jpg"
+        "JPG"=>"jpg",
+        "MP4"=>"mp4",
+        "MOV"=>"mov",
+        "FLV"=>"flv",
+        "TXT"=>"txt",
+        "PDF"=>"pdf"
+    );*/
+
+    $supportedFormats = array(
+        "ImageFormats" => array(
+            "PNG"=>"png",
+            "JPEG"=>"jpeg",
+            "GIF"=>"gif",
+            "JPG"=>"jpg",
+        ),
+        "VideoFormats" => array(
+            "MP4"=>"mp4",
+            "MOV"=>"mov",
+            "FLV"=>"flv",
+        ),
+        "DocumentFormats" => array(
+            "TXT"=>"txt",
+            "PDF"=>"pdf",
+        )
     );
+
     if ($numOfFiles == 1 && $_FILES["filesToUpload"]["name"][0] == null){
         echo "No Files Selected.:";
     } 
@@ -25,7 +49,13 @@
             $targetFile = $targetDir . $nameFix;
             $targetFile = str_replace(" ","_",$targetFile);
             $imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
-            if(in_array($imageFileType, $supportedFormats, true)){
+            
+            if(in_array($imageFileType, $supportedFormats['DocumentFormats'], true))
+            {
+                $_FILES["filesToUpload"]["type"][$i] = "document/" . $imageFileType;
+            }
+            
+            if(in_array($imageFileType, $supportedFormats['ImageFormats'], true) || in_array($imageFileType, $supportedFormats['VideoFormats'], true) || in_array($imageFileType, $supportedFormats['DocumentFormats'], true)){
                 if(!file_exists($targetFile)){
                     if(move_uploaded_file($_FILES["filesToUpload"]["tmp_name"][$i], $targetFile)){
                         $weburl = "http://localhost/FileHosting/uploads/" . $_SESSION['UserAccount']['FirstName'] . "_" . $_SESSION['UserAccount']['UniqueKey'] . "/" . $nameFix;

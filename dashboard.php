@@ -15,6 +15,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
+        <base href="http://localhost/FileHosting/">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
@@ -31,7 +32,6 @@
         <![endif]-->
 
         <div id="file-upload-area">
-            <h2>New File Import</h2>
             <form action="PHP/Scripts/fileUploadScript.php" method="post" enctype="multipart/form-data">
                 <input draggable="true" onchange="returnFileNames()" type="file" name="filesToUpload[]" id="rlMediaUploadBttn" multiple hidden>
                 <label for="rlMediaUploadBttn">
@@ -49,7 +49,7 @@
         
         <div id="dashboard-container">
             <div id="dashboard-logo">
-                <img src="Media/Images/logo-white.png"/>
+                <img src="Media/Images/logo-blue.png"/>
             </div>
 
             <div id="dashboard-header">
@@ -67,6 +67,7 @@
                     </div>
                     <div id="db-hdr-right-left">
                         <h3><?php echo $_SESSION['UserAccount']['FirstName']. " ". $_SESSION['UserAccount']['Surname'];?></h3>
+                        <p><?php echo "Account: ".$_SESSION['UserAccount']['Type'] ?></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +77,7 @@
                     <div onclick="showUploadArea()" id="add-media-button"><span>Upload File </span><i class="fa-solid fa-file-arrow-up"></i></div>
                 </div>
                 <div id="dashboard-nav-menu">
-                    <ul>
+                    <ul class="top-nav-items">
                         <li><a><i class="fa-solid fa-house"></i> <span>Overview</span></a></li>
                         <li><a><i class="fa-solid fa-image"></i> <span>Pictures</span></a></li>
                         <li><a><i class="fa-solid fa-film"></i> <span>Videos</span></a></li>
@@ -92,79 +93,35 @@
             </div>
 
             <div id="dashboard-content">
+                <div class="section-heading">
+                    <div class="section-heading-title">
+                        <h3>Recent image files</h3>
+                    </div>
+                    <div class="section-heading-separator">
+                        <div class="seperator-bar"></div>
+                    </div>
+                </div>
                 <div id="images-content">
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
+                </div>
+                <div class="section-heading">
+                    <div class="section-heading-title">
+                        <h3>Recent video files</h3>
                     </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
+                    <div class="section-heading-separator">
+                        <div class="seperator-bar"></div>
                     </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
+                </div>
+                <div id="videos-content">
+                </div>
+                <div class="section-heading">
+                    <div class="section-heading-title">
+                        <h3>Recent document files</h3>
                     </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
+                    <div class="section-heading-separator">
+                        <div class="seperator-bar"></div>
                     </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
-                    <div class="image-tile">
-                        <div class="image-tile-details">
-                            <a href=""><i class="fa-solid fa-info"></i></a>
-                            <a href=""><i class="fa-solid fa-cloud-arrow-down"></i></a>
-                        </div>
-                    </div>
+                </div>
+                <div id="documents-content">
                 </div>
             </div>
 

@@ -109,13 +109,13 @@ Class User {
 
                     $dirLocal = "../../uploads/".$results['FirstName']."_".$results['UniqueKey'];
 
-                    $userInfo = array("Type"=>"User","FirstName"=>$results['FirstName'],"Surname"=>$results['Surname'],"userEmail"=>$results['Email'],"UploadDirectory"=>$dirLocal,"UniqueKey"=>$results['UniqueKey']);
+                    $userInfo = array("Type"=>$results['Type'],"FirstName"=>$results['FirstName'],"Surname"=>$results['Surname'],"userEmail"=>$results['Email'],"UploadDirectory"=>$dirLocal,"UniqueKey"=>$results['UniqueKey']);
 
                     $sessionsStart -> createUserSession($userInfo);
                     
                     if (isset($_SESSION['UserAccount'])){
                         print_r($_SESSION['UserAccount']['FirstName']);
-                        header("Location: ../../dashboard.php");
+                        header("Location: ../../Dashboard/");
                     }
                 } else{
                     echo "<p>Oops it would appear you entered an incorrect password.</p>";

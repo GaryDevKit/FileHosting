@@ -2,7 +2,10 @@
 /* Include Classes file*/
 include_once '../Classes/UserClass.php';
 include_once '../Classes/DirectoryClass.php';
+include_once '../Classes/SessionsClass.php';
 
+$sessionsStart = new sessionClass();
+$sessionsStart -> startSession();
 
 //Check if the request is a post.
 
@@ -36,6 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }*/
 
 }
-
-
 ?>

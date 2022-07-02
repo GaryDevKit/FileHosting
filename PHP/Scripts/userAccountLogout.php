@@ -5,7 +5,7 @@
 
     if(isset($_SESSION['UserAccount'])){
         $sessionsStart -> destroySession();
-        header("Location: ../../index.php");
+        header("Location: ../../Login/");
     }
 
 
