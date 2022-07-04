@@ -1,8 +1,26 @@
+/*
+=====================================================================================================
+WHEN IMPORTING FROM A CLASS/FUNCTION/VARIABLE FROM ANOTHER FILE, WIL WILL NEED TO BOTH DELCARE
+THE FUNCTION AND THEN CALL THE FUNCTION.
+=====================================================================================================
+*/
+
+import {FileShow} from "/FileHosting/Javascript/Classes/FileShowClass.js";
+
 function ShowFiles(){
-    showImageFiles();
-    showVideoFiles();
-    showDocFiles();
+    const filesShow = new FileShow();
+    filesShow.showFileTypes();
 }
+
+ShowFiles();
+
+
+/*
+=====================================================================================================
+BELOW FUCNCTIONS HAVE BEEN COMMENTED OUT.
+REASON:: CREATED A CLASS (Javascript/Classes/FileShowClass.js), WHICH USES MAKES USE OF AN OBJECT. 
+         LOOPINIG THROUGH THE OBJECT PROVIDES THE SAME FUNCTIONALITY, AS THIS LONGER METHOD BELOW.
+=====================================================================================================
 
 function showImageFiles(type){
 
@@ -95,4 +113,4 @@ function RemoveFile(tile, name){
     }
 
     xhttp.send(file);
-}
+}*/

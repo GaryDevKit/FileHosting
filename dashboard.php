@@ -4,7 +4,7 @@
     $sessionsStart -> startSession();
 
     if(!isset($_SESSION['UserAccount'])){
-        header ("Location: index.php");
+        header ("Location: /FileHosting/Login/");
     }
 ?>
 
@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="CSS\dashboard-styles.css">
         <script src="Javascript/Scripts/imageUploadFileNames.js"></script>
-        <script src="Javascript/Scripts/fileDashboardDisplay.js"></script>
+        <script type="module" src="Javascript/Scripts/fileDashboardDisplay.js"></script>
     </head>
     <body onload="ShowFiles()">
         <!--[if lt IE 7]>
