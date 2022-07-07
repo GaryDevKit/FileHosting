@@ -9,8 +9,9 @@ $sessionsStart -> startSession();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $imageType = $_POST['Type'];
+    $Limit = $_POST['Limit'];
     
-    $fileDisplay = new DisplayMediaClass($imageType);
+    $fileDisplay = new DisplayMediaClass($imageType, $Limit);
     $fileDisplay -> searchFiles();
 }
 ?>

@@ -78,10 +78,10 @@
                 </div>
                 <div id="dashboard-nav-menu">
                     <ul class="top-nav-items">
-                        <li><a><i class="fa-solid fa-house"></i> <span>Overview</span></a></li>
-                        <li><a><i class="fa-solid fa-image"></i> <span>Pictures</span></a></li>
-                        <li><a><i class="fa-solid fa-film"></i> <span>Videos</span></a></li>
-                        <li><a><i class="fa-solid fa-file-word"></i> <span>Documents</span></a></li>
+                        <li onclick="ShowFiles()"><a><i class="fa-solid fa-house"></i> <span>Overview</span></a></li>
+                        <li onclick="ShowFiles('image')"><a><i class="fa-solid fa-image"></i> <span>Pictures</span></a></li>
+                        <li onclick="ShowFiles('video')"><a><i class="fa-solid fa-film"></i> <span>Videos</span></a></li>
+                        <li onclick="ShowFiles('document')"><a><i class="fa-solid fa-file-word"></i> <span>Documents</span></a></li>
                         <li><a><i class="fa-solid fa-file-zipper"></i> <span>Compressed Files</span></a></li>
                     </ul>
                     <div></div>
@@ -93,36 +93,44 @@
             </div>
 
             <div id="dashboard-content">
-                <div class="section-heading">
-                    <div class="section-heading-title">
-                        <h3>Recent image files</h3>
+                
+                <div id="dashboard-content-overview">
+                    <div class="section-heading">
+                        <div class="section-heading-title">
+                            <h3>Recent image files</h3>
+                        </div>
+                        <div class="section-heading-separator">
+                            <div class="seperator-bar"></div>
+                        </div>
                     </div>
-                    <div class="section-heading-separator">
-                        <div class="seperator-bar"></div>
+                    <div id="images-content" class="grid-area">
+                    </div>
+                    <div class="section-heading">
+                        <div class="section-heading-title">
+                            <h3>Recent video files</h3>
+                        </div>
+                        <div class="section-heading-separator">
+                            <div class="seperator-bar"></div>
+                        </div>
+                    </div>
+                    <div id="videos-content" class="grid-area">
+                    </div>
+                    <div class="section-heading">
+                        <div class="section-heading-title">
+                            <h3>Recent document files</h3>
+                        </div>
+                        <div class="section-heading-separator">
+                            <div class="seperator-bar"></div>
+                        </div>
+                    </div>
+                    <div id="documents-content" class="grid-area">
                     </div>
                 </div>
-                <div id="images-content">
+                
+                <div id="dashboard-content-section" class="dashboard-section-hidden">
+                    
                 </div>
-                <div class="section-heading">
-                    <div class="section-heading-title">
-                        <h3>Recent video files</h3>
-                    </div>
-                    <div class="section-heading-separator">
-                        <div class="seperator-bar"></div>
-                    </div>
-                </div>
-                <div id="videos-content">
-                </div>
-                <div class="section-heading">
-                    <div class="section-heading-title">
-                        <h3>Recent document files</h3>
-                    </div>
-                    <div class="section-heading-separator">
-                        <div class="seperator-bar"></div>
-                    </div>
-                </div>
-                <div id="documents-content">
-                </div>
+
             </div>
 
         </div>
