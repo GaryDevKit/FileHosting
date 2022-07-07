@@ -1,5 +1,10 @@
 <?php
 
+/*
+    Import the classes required for the database connection.
+*/
+include_once '../Database/database.php';
+
 class DisplayMediaClass {
     public $fileType;
     public $Limit;
